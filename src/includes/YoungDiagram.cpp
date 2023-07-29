@@ -29,6 +29,8 @@ namespace LRCSim
 
     bool YoungDiagram::isWellShaped() const { return isYoung(shape); }
 
+    int YoungDiagram::height() const { return shape.size(); }
+
     std::ostream &operator<<(std::ostream &os, const YoungDiagram &yd)
     {
         os << yd.getShape();

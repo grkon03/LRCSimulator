@@ -6,6 +6,7 @@ namespace LRCSim
 {
     class YoungDiagram
     {
+    protected:
         // variables
 
         /**
@@ -48,6 +49,13 @@ namespace LRCSim
          * @return whether this is shaped as young diagram
          */
         bool isWellShaped() const;
+
+        /**
+         * @brief Get the height
+         *
+         * @return the height
+         */
+        int height() const;
     };
 
     // operator
