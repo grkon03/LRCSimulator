@@ -1,6 +1,5 @@
 #include <iostream>
 #include "includes/LRCSimAllIncludes.hpp"
-#include <map>
 
 using namespace LRCSim;
 
@@ -8,70 +7,54 @@ int main()
 {
     // sample program
 
-    const int N = 10;
-    int i, j;
-    int all = 0;
+    YoungDiagram yd({5, 4, 3, 3, 3});
 
-    std::vector<YoungDiagram> lists[N];
-    LRCCalculator tempcal;
-    std::map<int, int> counter;
+    std::cout << yd << std::endl;
 
-    for (i = 0; i < N; ++i)
+    SkewDiagram sd({4, 3, 1}, {3, 1});
+
+    std::cout << sd << std::endl;
+
+    LRSkewTableaux lrst(sd, {3, 2, 1, 1});
+
+    std::cout << lrst << std::endl;
+
+    LRSkewTableaux lrst2(SSTabSim::TableauxShape(
+        {{0, 0, 0, 1},
+         {0, 2, 1},
+         {3}}));
+
+    std::cout << lrst2 << std::endl;
+
+    LRCCalculator lrcc(
+        {8, 5, 3},
+        {5, 4},
+        {4, 2, 1});
+
+    std::cout << lrcc.getContainer() << std::endl;
+    std::cout << lrcc.getHole() << std::endl;
+    std::cout << lrcc.getWeight() << std::endl;
+
+    std::cout << std::endl
+              << "Littlewood-Robbinson Coefficient is " << lrcc.getCoefficient()
+              << " in such the skew Littlewood-Robbinson Tableaux" << std::endl
+              << std::endl;
+
+    std::cout << "All the Tableauxes: " << std::endl
+              << std::endl;
+
+    for (auto s : lrcc.getAbleTableauxes())
     {
-        lists[i] = YoungDiagram::enumPartitions(i);
+        std::cout << s << std::endl;
     }
 
-    for (i = 1; i < N; ++i)
-    {
-        for (j = 1; j < i; ++j)
-        {
-            for (auto con : lists[i])
-            {
-                for (auto hol : lists[j])
-                {
-                    for (auto wei : lists[i - j])
-                    {
-                        try
-                        {
-                            tempcal = LRCCalculator(con, hol, wei);
-                        }
-                        catch (const char *err)
-                        {
-                            continue;
-                        }
-                        ++all;
-                        if (tempcal.getCoefficient() == 0)
-                            continue;
-                        ++counter[tempcal.getCoefficient()];
-                        // std::cout << "Container: " << std::endl;
-                        // std::cout << con << std::endl;
-                        // std::cout << "Hole: " << std::endl;
-                        // std::cout << hol << std::endl;
-                        // std::cout << "Weight: " << std::endl;
-                        // std::cout << wei << std::endl;
-                        // std::cout << std::endl;
-                        // std::cout << "coefficient: " << tempcal.getCoefficient() << std::endl;
-                        // std::cout << std::endl;
-                        // std::cout << "tableauxes: " << std::endl;
-                        // for (auto tab : tempcal.getAbleTableauxes())
-                        // {
-                        //     std::cout << tab << std::endl;
-                        // }
-                        // std::cout << std::endl;
-                        // std::cout << "****************************" << std::endl;
-                        // std::cout << std::endl;
-                    }
-                }
-            }
-        }
-    }
+    std::vector<YoungDiagram> part5 = YoungDiagram::enumPartitions(5);
 
-    std::cout << "N: " << N << std::endl;
-    std::cout << "count: " << std::endl;
-    std::cout << "  all: " << all << std::endl;
+    std::cout << "All of the partitions of 5: " << std::endl
+              << std::endl;
 
-    for (auto [k, v] : counter)
+    for (auto yd : part5)
     {
-        std::cout << "  " << k << ": " << v << std::endl;
+        std::cout << yd << std::endl;
     }
 }
