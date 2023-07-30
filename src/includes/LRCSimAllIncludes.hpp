@@ -4,3 +4,4 @@
 #include "YoungDiagram.hpp"
 #include "SkewDiagram.hpp"
 #include "LRSkewTableaux.hpp"
+#include "LRCCalculator.hpp"

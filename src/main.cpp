@@ -25,4 +25,26 @@ int main()
          {3}}));
 
     std::cout << lrst2 << std::endl;
+
+    LRCCalculator lrcc(
+        {8, 5, 3},
+        {5, 4},
+        {4, 2, 1});
+
+    std::cout << lrcc.getContainer() << std::endl;
+    std::cout << lrcc.getHole() << std::endl;
+    std::cout << lrcc.getWeight() << std::endl;
+
+    std::cout << std::endl
+              << "Littlewood-Robbinson Coefficient is " << lrcc.getCoefficient()
+              << " in such the skew Littlewood-Robbinson Tableaux" << std::endl
+              << std::endl;
+
+    std::cout << "All the Tableauxes: " << std::endl
+              << std::endl;
+
+    for (auto s : lrcc.getAbleTableauxes())
+    {
+        std::cout << s << std::endl;
+    }
 }
