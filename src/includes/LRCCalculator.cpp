@@ -5,6 +5,9 @@
 
 namespace LRCSim
 {
+    LRCCalculator::LRCCalculator()
+        : LRCCalculator({}, {}, {}) {}
+
     LRCCalculator::LRCCalculator(DiagramShape shape, DiagramShape hole, DiagramShape weight)
         : LRCCalculator(YoungDiagram(shape), YoungDiagram(hole), YoungDiagram(weight)) {}
 
@@ -17,6 +20,9 @@ namespace LRCSim
     LRCCalculator::LRCCalculator(SkewDiagram sd, YoungDiagram weight)
         : SkewDiagram(sd), weight(weight)
     {
+        ableTableauxes = std::vector<LRSkewTableaux>();
+        coefficient = 0;
+
         std::vector<RowWord> list = rowWordCandidates();
 
         for (auto word : list)

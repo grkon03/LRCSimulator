@@ -30,6 +30,7 @@ namespace LRCSim
     public:
         // constructors
 
+        LRCCalculator();
         LRCCalculator(DiagramShape, DiagramShape, DiagramShape);
         LRCCalculator(YoungDiagram, YoungDiagram, YoungDiagram);
         LRCCalculator(SkewDiagram, DiagramShape);
