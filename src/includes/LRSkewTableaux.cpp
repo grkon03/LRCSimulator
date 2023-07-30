@@ -31,7 +31,7 @@ namespace LRCSim
                 hs.push_back(hnum);
             }
 
-            return SkewDiagram(hs, cs);
+            return SkewDiagram(cs, hs);
         }
 
         RowWord extractRowWord(SSTabSim::MTab mtab)
@@ -145,16 +145,20 @@ namespace LRCSim
     {
         SSTabSim::TableauxShape ts;
         std::vector<int> trow;
+        DiagramShape cs = shape;
         DiagramShape hs = hole.getShape();
 
-        hs.resize(shape.size());
+        hs.resize(cs.size());
+
+        std::reverse(cs.begin(), cs.end());
+        std::reverse(hs.begin(), hs.end());
 
         int i, j, irw = 0;
 
-        for (i = 0; i < shape.size(); ++i)
+        for (i = 0; i < cs.size(); ++i)
         {
             trow = std::vector<int>();
-            for (j = 0; j < shape[i]; ++j)
+            for (j = 0; j < cs[i]; ++j)
             {
                 if (j < hs[i])
                     trow.push_back(0);
@@ -163,6 +167,8 @@ namespace LRCSim
             }
             ts.push_back(trow);
         }
+
+        std::reverse(ts.begin(), ts.end());
 
         return SSTabSim::MTab(ts);
     }
