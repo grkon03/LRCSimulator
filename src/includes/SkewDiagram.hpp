@@ -61,6 +61,13 @@ namespace LRCSim
          * @return whether the hole is contained by main diagram
          */
         bool isWellHoled() const;
+
+        /**
+         * @brief Get the size except the hole
+         *
+         * @return the size
+         */
+        int sizeExceptHole() const;
     };
 
     std::ostream &operator<<(std::ostream &, const SkewDiagram &);

@@ -31,6 +31,18 @@ namespace LRCSim
 
     int YoungDiagram::height() const { return shape.size(); }
 
+    int YoungDiagram::size() const
+    {
+        int s = 0;
+
+        for (auto v : shape)
+        {
+            s += v;
+        }
+
+        return s;
+    }
+
     std::ostream &operator<<(std::ostream &os, const YoungDiagram &yd)
     {
         os << yd.getShape();

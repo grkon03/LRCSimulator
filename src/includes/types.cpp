@@ -40,4 +40,35 @@ namespace LRCSim
         else
             return isYoung(DiagramShape(shape.begin() + 1, shape.end()));
     }
+
+    bool isLatticeWord(RowWord rowWord)
+    {
+        RowWord revrw = rowWord;
+        std::vector<int> counter;
+
+        std::reverse(revrw.begin(), revrw.end());
+
+        // verify yamanouchi word
+
+        int i, _v;
+
+        for (auto v : revrw)
+        {
+            _v = v - 1;
+            if (_v < counter.size())
+                ++counter[_v];
+            else if (_v == counter.size())
+                counter.push_back(0);
+            else
+                return false;
+
+            for (i = 0; i < counter.size() - 1; ++i)
+            {
+                if (counter[i] < counter[i + 1])
+                    return false;
+            }
+        }
+
+        return true;
+    }
 }

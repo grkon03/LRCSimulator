@@ -14,4 +14,8 @@ int main()
     SkewDiagram sd({4, 3, 1}, {3, 1});
 
     std::cout << sd << std::endl;
+
+    LRSkewTableaux lrst(sd, {3, 2, 1, 1});
+
+    std::cout << lrst << std::endl;
 }

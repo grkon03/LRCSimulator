@@ -69,6 +69,8 @@ namespace LRCSim
         return true;
     }
 
+    int SkewDiagram::sizeExceptHole() const { return size() - hole.size(); }
+
     std::ostream &operator<<(std::ostream &os, const SkewDiagram &sd)
     {
         DiagramShape hs = sd.getHole().getShape();

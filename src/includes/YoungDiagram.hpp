@@ -56,6 +56,13 @@ namespace LRCSim
          * @return the height
          */
         int height() const;
+
+        /**
+         * @brief Get the size
+         *
+         * @return the size
+         */
+        int size() const;
     };
 
     // operator
