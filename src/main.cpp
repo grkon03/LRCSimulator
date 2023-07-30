@@ -47,4 +47,14 @@ int main()
     {
         std::cout << s << std::endl;
     }
+
+    std::vector<YoungDiagram> part5 = YoungDiagram::enumPartitions(5);
+
+    std::cout << "All of the partitions of 5: " << std::endl
+              << std::endl;
+
+    for (auto yd : part5)
+    {
+        std::cout << yd << std::endl;
+    }
 }

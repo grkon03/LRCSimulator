@@ -22,6 +22,16 @@ namespace LRCSim
 
         YoungDiagram(const YoungDiagram &);
 
+        // static functions
+
+        /**
+         * @brief enumerate all partitions of the size
+         *
+         * @param size the size of partitions
+         * @return paritions list
+         */
+        static std::vector<YoungDiagram> enumPartitions(unsigned int size);
+
         // functions
 
         /**
