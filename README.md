@@ -17,5 +17,5 @@ cmake --build .
 ## execute
 
 ```
-./SSTabSimulator
+./LRCSimulator
 ```
